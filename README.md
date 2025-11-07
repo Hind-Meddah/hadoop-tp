@@ -5,7 +5,13 @@ Mettre en place un cluster Hadoop avec Docker et manipuler HDFS.
 
 ## Structure du projet
 - `docker-compose.yml` : Configuration des conteneurs (1 master, 2 slaves)  
-- `shared_volume/` : Contient les fichiers `purchases.txt`, `alice.txt`, `achat.txt`  
+- `shared_volume/` : Contient les fichiers :
+  - `purchases.txt`
+  - `alice.txt`
+  - `calls.txt`
+  - `purchases_2.txt`
+  - `movielens_movies.json`
+  - `movielens_users.json`
 
 ## Instructions pour lancer le TP
 
