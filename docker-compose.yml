@@ -1,0 +1,34 @@
+services:
+  hadoop-master:
+    image: yassern1/hadoop-spark-jupyter:1.0.3
+    container_name: hadoop-master
+    hostname: hadoop-master
+    ports:
+      - "9870:9870"
+      - "8088:8088"
+      - "19888:19888"
+    volumes:
+      - ./shared_volume:/shared_volume
+    networks:
+      - hadoop-net
+    command: bash -c "service ssh start && ./start-hadoop.sh && tail -f /dev/null"
+
+  hadoop-slave1:
+    image: yassern1/hadoop-spark-jupyter:1.0.3
+    container_name: hadoop-slave1
+    hostname: hadoop-slave1
+    networks:
+      - hadoop-net
+    command: bash -c "service ssh start && tail -f /dev/null"
+
+  hadoop-slave2:
+    image: yassern1/hadoop-spark-jupyter:1.0.3
+    container_name: hadoop-slave2
+    hostname: hadoop-slave2
+    networks:
+      - hadoop-net
+    command: bash -c "service ssh start && tail -f /dev/null"
+
+networks:
+  hadoop-net:
+    driver: bridge
